@@ -1,5 +1,13 @@
-import * as usersRepo from './user.memory.repository.js';
+const user = require('./user.model');
 
-const getAll = () => usersRepo.getAll();
+const user = [];
 
-export { getAll };
+exports.getAbiturientById = (abiturientId) => {};
+
+exports.getAbiturientExams = (abiturientId) => {};
+
+exports.createAbiturient = (abiturientData) => {};
+
+exports.updateAbiturient = (abiturientId, updatedAbiturientData) => {};
+
+exports.deleteAbiturient = (abiturientId) => {};

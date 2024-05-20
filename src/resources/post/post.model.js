@@ -1,5 +1,5 @@
 class Post {
-    constructor(id, title, text, createdAt, user, comments) {
+    constructor(id = uuidv4(), title, text, createdAt, user, comments) {
       this.id = id;
       this.title = title;
       this.text = text;

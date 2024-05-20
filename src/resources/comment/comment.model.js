@@ -1,5 +1,5 @@
 class Comment {
-    constructor(id, text, createdAt, user, post) {
+    constructor(id = uuidv4(), text, createdAt, user, post) {
       this.id = id;
       this.text = text;
       this.createdAt = createdAt;
