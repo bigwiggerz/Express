@@ -1,15 +1,34 @@
-const commentService = require('./comment.service');
+import * as CommentService from '../comment/comment.service';
 
-exports.getAllcomments = (req, res) => {};
+export const getAllComments = async (req, res) => {
+  const comments = CommentService.getAllComments();
+  res.json(comments);
+};
 
-exports.getcommentById = (req, res) => {};
+export const getCommentById = async (req, res) => {
+  const comment = CommentService.getCommentById(req.params.id);
+  if (comment) {
+    res.json(comment);
+  } else {
+    res.status(404).send('Comment not found');
+  }
+};
 
-exports.getcommentuser = (req, res) => {};
+export const createComment = async (req, res) => {
+  const comment = CommentService.createComment(req.body);
+  res.status(201).json(comment);
+};
 
-exports.getpostcomment = (req, res) => {};
+export const updateComment = async (req, res) => {
+  const comment = CommentService.updateComment(req.params.id, req.body);
+  if (comment) {
+    res.json(comment);
+  } else {
+    res.status(404).send('Comment not found');
+  }
+};
 
-exports.createcomment = (req, res) => {};
-
-exports.updatecomment = (req, res) => {};
-
-exports.deletecomment = (req, res) => {};
+export const deleteComment = async (req, res) => {
+  CommentService.deleteComment(req.params.id);
+  res.status(204).send();
+};
