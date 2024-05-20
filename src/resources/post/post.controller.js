@@ -1,14 +1,44 @@
-const postService = require('./post.service');
+import * as PostService from '../post/post.service';
 
-exports.getAllpost = (req, res) => {};
+export const getAllPosts = async (req, res) => {
+  const posts = PostService.getAllPosts();
+  res.json(posts);
 
-exports.getpostById = (req, res) => {};
+};
 
-exports.getpostuser = (req, res) => {};
+export const getPostById = async (req, res) => {
+  const post = PostService.getPostById(req.params.id);
+  if (post) {
 
-exports.getcommentpost = (req, res) => {};
+    res.json(post);
 
-exports.createpost = (req, res) => {};
+  } else {
 
-exports.updatepost = (req, res) => {};
-exports.deletepost = (req, res) => {};
+    res.status(404).send('Post not found');
+
+  }
+
+};
+
+export const createPost = async (req, res) => {
+  const post = PostService.createPost(req.body);
+  res.status(201).json(post);
+};
+
+export const updatePost = async (req, res) => {
+  const post = PostService.updatePost(req.params.id, req.body);
+  if (post) {
+
+    res.json(post);
+
+  } else {
+
+    res.status(404).send('Post not found');
+
+  }
+};
+
+export const deletePost = async (req, res) => {
+  PostService.deletePost(req.params.id);
+  res.status(204).send();
+};
