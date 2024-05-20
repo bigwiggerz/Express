@@ -1,17 +1,13 @@
-import { v4 as uuidv4 } from 'uuid';
-
 class User {
-  constructor({ id = uuidv4(), name = 'USER', login = 'user', password = 'P@55w0rd' } = {}) {
+  constructor(id, email, name, password, salt, posts, comments) {
     this.id = id;
+    this.email = email;
     this.name = name;
-    this.login = login;
     this.password = password;
-  }
-
-  static toResponse(user) {
-    const { id, name, login } = user;
-    return { id, name, login };
+    this.salt = salt;
+    this.posts = posts;
+    this.comments = comments;
   }
 }
 
-export default User;
+module.exports = User;
