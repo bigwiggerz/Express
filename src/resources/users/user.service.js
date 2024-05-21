@@ -1,4 +1,4 @@
-import * as userRepository from '../users/user.memory.repository';
+import * as userRepository from "./user.memory.repository.js";
 
 export const getAllUsers = () => userRepository.getUsers();
 

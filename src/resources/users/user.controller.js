@@ -1,7 +1,7 @@
-import * as UserService from '../users/user.service';
+import * as UserService from "./user.service.js";
 
-export const getAllUsers = async (req, res) => {
-  const users = UserService.getAllUsers();
+export const getAllUsers =  (req, res) => {
+  const users =  UserService.getAllUsers();
   res.json(users.map(user => ({ id: user.id, name: user.name, email: user.email })));
 };
 

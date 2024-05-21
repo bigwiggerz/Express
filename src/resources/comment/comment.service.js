@@ -1,4 +1,4 @@
-import * as commentRepository from '../comment/comment.memory.repository';
+import * as commentRepository from "./comment.memory.repository.js";
 
 export const getAllComments = () => commentRepository.getComments();
 

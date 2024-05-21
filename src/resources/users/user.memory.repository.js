@@ -1,4 +1,4 @@
-let users = [];
+const users = [];
 
 export const getUsers = () => users;
 

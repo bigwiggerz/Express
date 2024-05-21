@@ -1,12 +1,43 @@
-const express = require('express');
-const UserController = require('../users/user.controller');
-const router = express.Router();
+import { Router } from 'express';
+import * as UserService from "./user.service.js";
 
-router.get('/', UserController.getAllusers);
-router.get('/userId', UserController.getuserById);
-router.get('/:userId/posts', UserController.getuserPosts);
-router.post('/', UserController.createuser);
-router.put('/:userId', UserController.updateuser);
-router.delete('/:userId', UserController.deleteuser);
+const router = Router();
 
-module.exports = router;
+router.get('/', (req, res) => {
+  const users = UserService.getAllUsers();
+  res.json(users);
+});
+
+router.get('/:userId', (req, res) => {
+  const user = UserService.getUserById(req.params.userId);
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404).send('User not found');
+  }
+});
+
+router.post('/', (req, res) => {
+  const newUser = UserService.createUser(req.body);
+  res.status(201).json(newUser);
+});
+
+router.put('/:userId', (req, res) => {
+  const updatedUser = UserService.updateUser(req.params.userId, req.body);
+  if (updatedUser) {
+    res.json(updatedUser);
+  } else {
+    res.status(404).send('User not found');
+  }
+});
+
+router.delete('/:userId', (req, res) => {
+  const deletedUser = UserService.deleteUser(req.params.userId);
+  if (deletedUser) {
+    res.status(204).send();
+  } else {
+    res.status(404).send('User not found');
+  }
+});
+
+export default router;
