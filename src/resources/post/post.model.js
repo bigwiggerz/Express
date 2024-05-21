@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 class Post {
     constructor(id = uuidv4(), title, text, createdAt, user, comments) {
       this.id = id;
@@ -9,4 +11,4 @@ class Post {
     }
 }
 
-module.exports = Post;
+export default Post;

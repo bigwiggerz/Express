@@ -1,4 +1,5 @@
 let posts = [];
+let comments = [];
 
 export const getPosts = () => posts;
 
